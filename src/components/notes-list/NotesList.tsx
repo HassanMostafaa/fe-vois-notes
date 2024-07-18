@@ -1,7 +1,7 @@
 "use client";
 import { type FunctionComponent, useState } from "react";
 import { SCategoryButton, SGrid, SNotesList } from "./styles/NotesList.styles";
-import useNoteStore from "@/src/store/useNotes";
+import useNoteStore, { useLoadNotes } from "@/src/store/useNotes";
 import NoteCard from "../note-card/NoteCard";
 import useNoteModal from "@/src/store/useModal";
 import Modal from "../note-modal/NoteModal";
@@ -13,6 +13,7 @@ export const NotesList: FunctionComponent = () => {
   const { isOpen, selectedNote, closeModal } = useNoteModal();
   const { openAddNoteModal } = useAddNoteModalStore();
   const [categorySelected, setCategorySelected] = useState<string>("");
+  useLoadNotes();
 
   return (
     <SNotesList>
