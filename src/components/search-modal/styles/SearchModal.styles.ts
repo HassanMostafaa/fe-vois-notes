@@ -11,14 +11,26 @@ export const StyledSearchModal = styled.div`
   border-radius: 5px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 100;
-  max-height: 80%;
+  max-height: 90%;
   overflow: auto;
-  width: 50%;
+  min-width: 50%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    min-width: 80%;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    min-width: 95%;
+  }
 `;
 
-// Styled Search Modal Content
 export const StyledSearchModalContent = styled.div`
-  display: flex; /* Or use a different layout if needed */
+  display: flex;
   flex-direction: column;
   gap: 10px;
 `;
@@ -52,7 +64,7 @@ export const StyledLoadingIndicator = styled.p`
 // Styled Close Button
 export const StyledCloseButton = styled.button`
   padding: 10px 20px;
-  background-color: #ddd; /* Adjust background color */
+  background-color: #ddd;
   border: 1px solid #ccc;
   border-radius: 3px;
   cursor: pointer;
@@ -67,6 +79,6 @@ export const StyledModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for desired dimness */
-  z-index: 99; /* Ensure overlay is behind the modal content */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
 `;
