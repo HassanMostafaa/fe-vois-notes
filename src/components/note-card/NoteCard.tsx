@@ -11,9 +11,11 @@ import {
   StyledNoteButton,
   StyledDelButton,
 } from "./styles/NoteCard.styles";
+import useSearchModalStore from "@/src/store/useSearchModal";
 
 const NoteCard: FunctionComponent<Note> = ({ content, id, title, level }) => {
   const { notes, deleteNote } = useNoteStore();
+  const { closeSearchModal } = useSearchModalStore();
   const { openModal } = useNoteModal();
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
@@ -32,6 +34,7 @@ const NoteCard: FunctionComponent<Note> = ({ content, id, title, level }) => {
     );
     localStorage.setItem("notes", updatedStateForLocalstorage);
     setShowConfirmDelete(false);
+    closeSearchModal();
   };
 
   const cancelDelete = () => {
